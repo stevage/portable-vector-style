@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8' />
+    <title></title>
+    <meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
+    <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v0.39.1/mapbox-gl.js'></script>
+    <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v0.39.1/mapbox-gl.css' rel='stylesheet' />
+    <style>
+        body { margin:0; padding:0; }
+        #map1 { position:absolute; top:0; bottom:0; width:33%; }
+        #map2 { position:absolute; top:0; bottom:0; width:33%; left: 33.6%}
+        #map3 { position:absolute; top:0; bottom:0; width:33%; right:0}
+    </style>
+</head>
+<body>
+
+<div id='map1'></div>
+<div id='map2'></div>
+<div id='map3'></div>
+<script>
+mapboxgl.accessToken = 'pk.eyJ1Ijoic3RldmFnZSIsImEiOiJGcW03aExzIn0.QUkUmTGIO3gGt83HiRIjQw';
+var style = window.location.hash.substr(1) || 'liberty';
+
+var map1 = new mapboxgl.Map({
+    container: 'map1',
+    style: './in/' + style + '.json',
+    center: [145, -38],
+    zoom: 8
+});
+var map2 = new mapboxgl.Map({
+    container: 'map2',
+    style: './out/' + style + '-mapbox.json',
+    center: [145, -38],
+    zoom: 8
+});
+var map3 = new mapboxgl.Map({
+    container: 'map3',
+    style: './out/' + style + '-mapzen.json',
+    center: [145, -38],
+    zoom: 8
+});
+
+map1.on('move', (e,f,g) => {
+    //console.log(map1.);
+    [map2, map3].forEach(m => {
+        m.setCenter(map1.getCenter());
+        m.setZoom(map1.getZoom());
+    });
+});
+</script>
+
+</body>
+</html>
