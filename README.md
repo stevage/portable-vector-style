@@ -1,3 +1,9 @@
+## Moved
+
+This project is now at https://gitlab.com/stevage/mapbox2tangram, with many more updates.
+
+## Old readme
+
 This tool helps you port style files for Mapbox-GL-JS between three major OpenStreetMap vector tile providers: Mapbox, MapZen and OpenMapTiles. It's at an early proof-of-concept stage.
 
 For instance, here's OpenMapTiles.org's "OsmBright" style (on the left), as converted for Mapbox (centre), and Mapzen (right).
